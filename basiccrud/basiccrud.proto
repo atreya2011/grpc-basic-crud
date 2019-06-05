@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package basiccrud;
+
+import "google/api/annotations.proto";
+
+service BasicCrud {
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/v1/basiccrud"
+      body: "*"
+    };
+  }
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      get: "/v1/basiccrud/all"
+    };  
+  }
+  rpc Read(ReadRequest) returns (ReadResponse) {
+    option (google.api.http) = {
+      get: "/v1/basiccrud/{id}"
+    };
+  }
+}
+
+message Fullname {
+  int32 id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+}
+
+message CreateRequest {
+  Fullname fullname = 1;
+}
+
+message CreateResponse {
+  int32 id = 1;
+}
+
+message ReadRequest {
+  int32 id = 1;
+}
+
+message ReadResponse {
+  Fullname fullname = 1;
+}
+
+message ListRequest {}
+
+message ListResponse {
+  repeated Fullname fullnames = 1;
+}
