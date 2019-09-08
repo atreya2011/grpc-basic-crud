@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"gitlab.com/atreya2011/grpc-practice/basic-crud/basiccrud"
+	"github.com/atreya2011/grpc-practice/basic-crud/basiccrud"
 
 	"google.golang.org/grpc"
 )
